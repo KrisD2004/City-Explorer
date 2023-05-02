@@ -14,9 +14,12 @@ function App() {
      
 
   }
+  const getLocation = (e) => {
+    setLocation(e.target.value);
+  }
   return (
     <div className="App">
-       <ExploreLocation onCity = {CitySearch}  setLocate = {setLocation}/>
+       <ExploreLocation onCity = {CitySearch}  setLocate = {getLocation}/>
         
     </div>
   );
