@@ -1,25 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import ExploreLocation from './Exploring';
+import { useState } from 'react';
+import axios from 'axios';
 
 function App() {
+
+  const [Location, setLocation]= useState('')
+
+  const CitySearch = async (event) => {
+    event.preventDefault()
+    const API = await axios.get( 'https://us1.locationiq.com/v1/search.php?key=pk.7dd36f4d0ae867a7a750660f3731be40&q=' + Location + '&format=json');
+     
+
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <ExploreLocation onCity = {CitySearch} />
+        
     </div>
   );
 }
 
 export default App;
+ 
