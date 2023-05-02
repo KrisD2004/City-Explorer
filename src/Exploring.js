@@ -9,7 +9,7 @@ function ExploreLocation(props) {
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label></Form.Label>
-        <Form.Control/>
+        <Form.Control onInput={props.setLocate}/>
         <Form.Text onInput={props.setLocate} className="text-muted">
          {props.Location}
         </Form.Text>
