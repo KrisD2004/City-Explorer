@@ -10,13 +10,13 @@ function App() {
 
   const CitySearch = async (event) => {
     event.preventDefault()
-    const API = await axios.get( 'https://us1.locationiq.com/v1/search.php?key=pk.7dd36f4d0ae867a7a750660f3731be40&q=' + Location + '&format=json');
+    const API = await axios.get( 'https://us1.locationiq.com/v1/search.php?key=pk.7dd36f4d0ae867a7a750660f3731be40&q=' + Location+ '&format=json');
      
 
   }
   return (
     <div className="App">
-       <ExploreLocation onCity = {CitySearch} />
+       <ExploreLocation onCity = {CitySearch}  setLocate = {setLocation}/>
         
     </div>
   );

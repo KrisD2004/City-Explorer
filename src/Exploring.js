@@ -10,11 +10,11 @@ function ExploreLocation(props) {
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label></Form.Label>
         <Form.Control/>
-        <Form.Text className="text-muted">
+        <Form.Text onInput={props.setLocate} className="text-muted">
          {props.Location}
         </Form.Text>
       </Form.Group>
-      <Button onClick={props.onCity}variant="primary" type="submit">
+      <Button onClick={props.onCity} variant="primary" type="submit">
         Explore!
       </Button>
     </Form>
