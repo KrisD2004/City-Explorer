@@ -4,6 +4,10 @@ import ExploreLocation from './Exploring';
 import { useState } from 'react';
 // import axios library for making HTTP requests
 import axios from 'axios';
+import { Container, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 function App() {
 
@@ -37,6 +41,7 @@ function App() {
 
   // render the App component with the ExploreLocation component as a child
   return (
+    
     <div className="App">
       <ExploreLocation onCity={CitySearch} setLocate={getLocation} setData={setLocationData} />
        {locationData && (
