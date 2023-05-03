@@ -44,13 +44,15 @@ function App() {
     
     <div className="App">
       <ExploreLocation onCity={CitySearch} setLocate={getLocation} setData={setLocationData} />
-       {locationData && (
+      <Card> 
+        {locationData && (
         <>
           <h1>{locationData.displayName}</h1>
           <p>Latitude: {locationData.latitude}</p>
           <p>Longitude: {locationData.longitude}</p>
         </>
       )}
+      </Card>
       {/* <h1>{Location.display_name}</h1>
       <p>{locationData.displayName}</p>  
       <p>{locationData.latitude}</p> 
