@@ -34,7 +34,7 @@ function App() {
     setLocationData({ displayName: display_name, latitude: lat, longitude: lon });
     console.log(API)
 
-    let imageUrl = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KristianKey}&center=${locationData.latitude},${locationData.longitude}&format=jpg&zoom=9`
+    let imageUrl = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KristianKey}&center=${lat},${lon}&format=jpg&zoom=9`
     setImage(imageUrl)
 
 
@@ -59,7 +59,7 @@ function App() {
               <Card.Title>{locationData.displayName}</Card.Title>
               <Card.Text> <p>Latitude: {locationData.latitude}</p>
                 <p>Longitude: {locationData.longitude}</p></Card.Text>
-                <CardImg>{image}</CardImg>
+                <img src={image}/>
             </Card.Body>
           </Card>
         </>
