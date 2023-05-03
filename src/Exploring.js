@@ -6,7 +6,7 @@ import axios from "axios";
 function ExploreLocation(props) {
   // render a form component with a form group containing a form control input field and a form text component to display the location
   return (
-    <Card>
+    
       
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -22,7 +22,7 @@ function ExploreLocation(props) {
             Explore!
           </Button>
         </Form>
-    </Card>
+    
     
     
   );

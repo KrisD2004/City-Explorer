@@ -4,7 +4,7 @@ import ExploreLocation from './Exploring';
 import { useState } from 'react';
 // import axios library for making HTTP requests
 import axios from 'axios';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -41,24 +41,29 @@ function App() {
 
   // render the App component with the ExploreLocation component as a child
   return (
-    
+
     <div className="App">
       <h1>Where the Flock Are You?</h1>
       <ExploreLocation onCity={CitySearch} setLocate={getLocation} setData={setLocationData} />
-     
-        {locationData && (
+
+      {locationData && (
         <>
-          <h1>{locationData.displayName}</h1>
-          <p>Latitude: {locationData.latitude}</p>
-          <p>Longitude: {locationData.longitude}</p>
+          <Card>
+            <Card.Body>
+
+              <Card.Title>{locationData.displayName}</Card.Title>
+              <Card.Text> <p>Latitude: {locationData.latitude}</p>
+                <p>Longitude: {locationData.longitude}</p></Card.Text>
+            </Card.Body>
+          </Card>
         </>
       )}
-     
+
       {/* <h1>{Location.display_name}</h1>
       <p>{locationData.displayName}</p>  
       <p>{locationData.latitude}</p> 
       <p>{locationData.longitude}</p>     */}
-  {/* {locationData && locationData.displayName ? locationData.latitude && locationData.longitude} */}
+      {/* {locationData && locationData.displayName ? locationData.latitude && locationData.longitude} */}
       {/* <p>{locationData}</p> */}
     </div>
   );
