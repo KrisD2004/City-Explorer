@@ -39,10 +39,17 @@ function App() {
   return (
     <div className="App">
       <ExploreLocation onCity={CitySearch} setLocate={getLocation} setData={setLocationData} />
-      <h1>{Location.display_name}</h1>
+       {locationData && (
+        <>
+          <h1>{locationData.displayName}</h1>
+          <p>Latitude: {locationData.latitude}</p>
+          <p>Longitude: {locationData.longitude}</p>
+        </>
+      )}
+      {/* <h1>{Location.display_name}</h1>
       <p>{locationData.displayName}</p>  
       <p>{locationData.latitude}</p> 
-      <p>{locationData.longitude}</p>    
+      <p>{locationData.longitude}</p>     */}
   {/* {locationData && locationData.displayName ? locationData.latitude && locationData.longitude} */}
       {/* <p>{locationData}</p> */}
     </div>

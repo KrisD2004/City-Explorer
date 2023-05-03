@@ -12,7 +12,7 @@ function ExploreLocation(props) {
         <Form.Control onInput={props.setLocate}/>
         <Form.Text onInput={props.setLocate} className="text-muted">
          {/* {props.Location} {props.setData}   */}
-         {props.locationData && `${props.locationData.displayName} (${props.locationData.latitude}, ${props.locationData.longitude})`}
+         {/* {props.locationData && `${props.locationData.displayName} (${props.locationData.latitude}, ${props.locationData.longitude})`} */}
 
         </Form.Text>
       </Form.Group>
