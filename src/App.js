@@ -4,7 +4,7 @@ import ExploreLocation from './Exploring';
 import { useState } from 'react';
 // import axios library for making HTTP requests
 import axios from 'axios';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, CardImg } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -14,6 +14,9 @@ function App() {
   // create a state variable called Location and a function to update it
   const [Location, setLocation] = useState('')
   const [locationData, setLocationData] = useState(null);
+  const [image, setImage] = useState('')
+
+  
 
 
   // create an asynchronous function to handle the city search event
@@ -31,6 +34,8 @@ function App() {
     setLocationData({ displayName: display_name, latitude: lat, longitude: lon });
     console.log(API)
 
+    let imageUrl = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KristianKey}&center=${locationData.latitude},${locationData.longitude}&format=jpg&zoom=9`
+    setImage(imageUrl)
 
 
   }
@@ -54,6 +59,7 @@ function App() {
               <Card.Title>{locationData.displayName}</Card.Title>
               <Card.Text> <p>Latitude: {locationData.latitude}</p>
                 <p>Longitude: {locationData.longitude}</p></Card.Text>
+                <CardImg>{image}</CardImg>
             </Card.Body>
           </Card>
         </>
