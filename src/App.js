@@ -38,14 +38,17 @@ function App() {
   // render the App component with the ExploreLocation component as a child
   return (
     <div className="App">
+      <h1>Where the Flock Are You?</h1>
       <ExploreLocation onCity={CitySearch} setLocate={getLocation} setData={setLocationData} />
-       {locationData && (
+     
+        {locationData && (
         <>
           <h1>{locationData.displayName}</h1>
           <p>Latitude: {locationData.latitude}</p>
           <p>Longitude: {locationData.longitude}</p>
         </>
       )}
+     
       {/* <h1>{Location.display_name}</h1>
       <p>{locationData.displayName}</p>  
       <p>{locationData.latitude}</p> 
