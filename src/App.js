@@ -18,7 +18,7 @@ function App() {
     event.preventDefault()
 
     
-    const API = await axios.get( `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_KristianKey}&q=${Location}`);
+    const API = await axios.get( `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_KristianKey}&q=${Location}&format=json`);
  
     //  console.log(API.data[0].display_name);
 
