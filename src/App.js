@@ -78,7 +78,7 @@ function App() {
 
 
 
-      {locationData && (
+      
 
         <>
           <Card className='card'>
