@@ -90,7 +90,7 @@ function App() {
 
                 <img className='map-image'   src={image}/>
 
-              <img src={image} />
+              
 
             </Card.Body>
           </Card>
