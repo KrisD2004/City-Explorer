@@ -11,31 +11,53 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  // create a state variable called Location and a function to update it
+  // Create state variables to manage location data and image
+
   const [Location, setLocation] = useState('')
   const [locationData, setLocationData] = useState(null);
   const [image, setImage] = useState('')
+  const [error, setError] = useState('');
 
-  
 
 
-  // create an asynchronous function to handle the city search event
+  // Define function to handle city search event
   const CitySearch = async (event) => {
 
+    // preventing my form from refreshing the page
     event.preventDefault()
 
+    // This is checking if the location input is empty
+    if (!Location) {
+      setError('Please enter a valid location');
+      setLocationData(null);
+      setImage('');
+      return;
+    }
 
-    const API = await axios.get(`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_KristianKey}&q=${Location}&format=json`);
 
-    //  console.log(API.data[0].display_name);
+    try {
+      // Make API call to locationiq.com
+      const API = await axios.get(`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_KristianKey}&q=${Location}&format=json`);
 
-    const { display_name, lat, lon } = API.data[0];
-    // setLocationData(display_name,lattitude,longitude)
-    setLocationData({ displayName: display_name, latitude: lat, longitude: lon });
-    console.log(API)
 
-    let imageUrl = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KristianKey}&center=${lat},${lon}&format=jpg&zoom=9`
-    setImage(imageUrl)
+      // Object deconstructing: the display_name, lat, and lon properties are being assigned to variables with the same names as the properties.
+      const { display_name, lat, lon } = API.data[0];
+
+      // Update locationData state variable
+      setLocationData({ displayName: display_name, latitude: lat, longitude: lon });
+      console.log(API)
+
+      // Generate URL for map image using location data
+      let imageUrl = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KristianKey}&center=${lat},${lon}&format=jpg&zoom=9`
+      setImage(imageUrl)
+
+      // Clear error state variable if no error occurs
+      setError('');
+    } catch (error) {
+      setError('Place not found. Enter valid Location.')
+      setLocationData(null)
+      setImage('')
+    }
 
 
   }
@@ -51,7 +73,13 @@ function App() {
       <h1 className='title'>Where the Flock Are You?</h1>
       <ExploreLocation onCity={CitySearch} setLocate={getLocation} setData={setLocationData} />
 
+
       {locationData && ( 
+
+
+
+      {locationData && (
+
         <>
           <Card className='card'>
             <Card.Body>
@@ -59,10 +87,22 @@ function App() {
               <Card.Title>{locationData.displayName}</Card.Title>
               <Card.Text> <p>Latitude: {locationData.latitude}</p>
                 <p>Longitude: {locationData.longitude}</p></Card.Text>
+
                 <img className='map-image'   src={image}/>
+
+              <img src={image} />
+
             </Card.Body>
           </Card>
         </>
+
+      )}
+
+      {/* Render error message if error state variable exists */}
+      {error && (
+        <div className="error">
+          <p>{error}</p>
+        </div>
       )}
 
       
