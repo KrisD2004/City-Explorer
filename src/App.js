@@ -48,29 +48,24 @@ function App() {
   return (
 
     <div className="App">
-      <h1>Where the Flock Are You?</h1>
+      <h1 className='title'>Where the Flock Are You?</h1>
       <ExploreLocation onCity={CitySearch} setLocate={getLocation} setData={setLocationData} />
 
-      {locationData && (
+      {locationData && ( 
         <>
-          <Card>
+          <Card className='card'>
             <Card.Body>
 
               <Card.Title>{locationData.displayName}</Card.Title>
               <Card.Text> <p>Latitude: {locationData.latitude}</p>
                 <p>Longitude: {locationData.longitude}</p></Card.Text>
-                <img src={image}/>
+                <img className='map-image'   src={image}/>
             </Card.Body>
           </Card>
         </>
       )}
 
-      {/* <h1>{Location.display_name}</h1>
-      <p>{locationData.displayName}</p>  
-      <p>{locationData.latitude}</p> 
-      <p>{locationData.longitude}</p>     */}
-      {/* {locationData && locationData.displayName ? locationData.latitude && locationData.longitude} */}
-      {/* <p>{locationData}</p> */}
+      
     </div>
   );
 }
