@@ -51,7 +51,7 @@ function App() {
       let imageUrl = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KristianKey}&center=${lat},${lon}&format=jpg&zoom=9`
       setImage(imageUrl)
 
-      // Clear error state variable if no error occurs
+      // Clear error state variable if no error occurss
       setError('');
     } catch (error) {
       console.error(error)
