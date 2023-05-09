@@ -54,6 +54,7 @@ function App() {
       // Clear error state variable if no error occurs
       setError('');
     } catch (error) {
+      console.error(error)
       setError('Place not found. Enter valid Location.')
       setLocationData(null)
       setImage('')
