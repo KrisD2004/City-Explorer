@@ -40,7 +40,7 @@ function App() {
     try {
       // Make API call to locationiq.com
       const API = await axios.get(`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_KristianKey}&q=${Location}&format=json`);
-
+      weatherSearch();
 
       // Object deconstructing: the display_name, lat, and lon properties are being assigned to variables with the same names as the properties.
       const { display_name, lat, lon } = API.data[0];
