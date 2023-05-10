@@ -15,8 +15,10 @@ function App() {
 
   const [Location, setLocation] = useState('')
   const [locationData, setLocationData] = useState(null);
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState('');
   const [error, setError] = useState('');
+  const [weatherData, setWeather] = useState('');
+  const [err, setErr] = useState('')
 
 
 
@@ -61,25 +63,39 @@ function App() {
     }
 
 
+
+
+
   }
   // create a function to update the Location state variable when the user types in the input field
   const getLocation = (e) => {
     setLocation(e.target.value);
   }
 
+
+
+  const weatherSearch = async () => {
+
+    try {
+      // Make API call to locationiq.com
+      const API = await axios.get(`http://localhost:3001/weather?searchQ=${Location}`);
+      setWeather(API.data)
+      console.log(API.data)
+    } catch (err) {
+      console(err)
+    }
+  }
+  
+
   // render the App component with the ExploreLocation component as a child
   return (
 
     <div className="App">
       <h1 className='title'>Where the Flock Are You?</h1>
-      <ExploreLocation onCity={CitySearch} setLocate={getLocation} setData={setLocationData} />
+      <ExploreLocation onCity={CitySearch} setLocate={getLocation} setData={setLocationData} weatherButt={weatherSearch} />
 
 
-      {locationData && ( 
-
-
-
-      
+      {locationData && (
 
         <>
           <Card className='card'>
@@ -89,10 +105,7 @@ function App() {
               <Card.Text> <p>Latitude: {locationData.latitude}</p>
                 <p>Longitude: {locationData.longitude}</p></Card.Text>
 
-                <img className='map-image'   src={image}/>
-
-              
-
+              <img className='map-image' src={image} />
             </Card.Body>
           </Card>
         </>
@@ -106,7 +119,7 @@ function App() {
         </div>
       )}
 
-      
+
     </div>
   );
 }

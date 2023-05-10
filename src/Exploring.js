@@ -18,7 +18,11 @@ function ExploreLocation(props) {
 
             </Form.Text>
           </Form.Group>
-          <Button onClick={props.onCity} variant="primary" type="submit">
+          <Button onClick={(event) => {
+          
+          props.onCity(event); 
+           props.weatherButt();
+          }} variant="primary" >
             Explore!
           </Button>
         </Form>
