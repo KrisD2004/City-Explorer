@@ -82,7 +82,10 @@ function App() {
       setWeather(API.data)
       console.log(API.data)
     } catch (err) {
-      console(err)
+      console.error(err)
+      setError('Place not found. Enter valid Location.')
+      setLocationData(null)
+      setImage('')
     }
   }
   
