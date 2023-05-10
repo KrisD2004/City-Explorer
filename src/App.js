@@ -82,10 +82,10 @@ function App() {
       setWeather(API.data)
       console.log(API.data)
     } catch (err) {
-      console.error(err)
-      setError('Place not found. Enter valid Location.')
-      setLocationData(null)
-      setWeather('')
+      // console.error(err)
+      // setError('Place not found. Enter valid Location.')
+      // setLocationData(null)
+      // setWeather('')
     }
   }
   
