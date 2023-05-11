@@ -6,7 +6,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Card, CardImg } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import ForcastData from './weather'
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
   const [locationData, setLocationData] = useState(null);
   const [image, setImage] = useState('');
   const [error, setError] = useState('');
-  const [weatherData, setWeather] = useState('');
+  const [weatherData, setWeather] = useState([]);
   const [err, setErr] = useState('')
 
 
@@ -40,8 +40,7 @@ function App() {
     try {
       // Make API call to locationiq.com
       const API = await axios.get(`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_KristianKey}&q=${Location}&format=json`)
-      .then(function () {weatherSearch(API.data[0]);
-    });
+      
       
       // Object deconstructing: the display_name, lat, and lon properties are being assigned to variables with the same names as the properties.
       const { display_name, lat, lon } = API.data[0];
@@ -49,15 +48,16 @@ function App() {
       // Update locationData state variable
       setLocationData({ displayName: display_name, latitude: lat, longitude: lon });
       console.log(API)
-
+      
       // Generate URL for map image using location data
       let imageUrl = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KristianKey}&center=${lat},${lon}&format=jpg&zoom=9`
       setImage(imageUrl)
+      weatherSearch(lat,lon);
 
       // Clear error state variable if no error occurss
       setError('');
     } catch (error) {
-      
+      console.error(error)
       setError('Place not found. Enter valid Location.')
       setLocationData(null)
       setImage('')
@@ -75,15 +75,20 @@ function App() {
 
 
 
-  const weatherSearch = async (CityData) => {
+  const weatherSearch = async (lat, lon) => {
+    //http://localhost:3001/weather?searchQ=Seattle&latitude=7&longitude=8
+    
 
     try {
       // Make API call to locationiq.com
-      const API = await axios.get(`http://localhost:3001/weather?searchQ=${CityData.city_name}&${CityData.lat}&${CityData.lon}`);
+      const API = await axios.get(`http://localhost:3001/weather?searchQ=${Location}&longitude=${lon}&latitude=${lat}`);
       setWeather(API.data)
       console.log(API.data)
-    } catch (error) {
-      
+    } catch (err) {
+      console.error(err)
+      setErr('Sorry, an error occurred while fetching weather data. Please try again later.')
+      // setLocationData(null)
+       setWeather([])
     }
   }
   
@@ -94,8 +99,7 @@ function App() {
     <div className="App">
       <h1 className='title'>Where the Flock Are You?</h1>
       <ExploreLocation onCity={CitySearch} setLocate={getLocation} setData={setLocationData} weatherButt={weatherSearch} />
-
-
+      <ForcastData data={weatherData}/>
       {locationData && (
 
         <>
