@@ -39,8 +39,9 @@ function App() {
 
     try {
       // Make API call to locationiq.com
-      const API = await axios.get(`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_KristianKey}&q=${Location}&format=json`);
-      weatherSearch();
+      const API = await axios.get(`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_KristianKey}&q=${Location}&format=json`)
+      .then(function () {weatherSearch(API.data[0]);
+    });
       
       // Object deconstructing: the display_name, lat, and lon properties are being assigned to variables with the same names as the properties.
       const { display_name, lat, lon } = API.data[0];
@@ -56,7 +57,7 @@ function App() {
       // Clear error state variable if no error occurss
       setError('');
     } catch (error) {
-      console.error(error)
+      
       setError('Place not found. Enter valid Location.')
       setLocationData(null)
       setImage('')
@@ -74,18 +75,15 @@ function App() {
 
 
 
-  const weatherSearch = async () => {
+  const weatherSearch = async (CityData) => {
 
     try {
       // Make API call to locationiq.com
-      const API = await axios.get(`http://localhost:3001/weather?searchQ=${Location}`);
+      const API = await axios.get(`http://localhost:3001/weather?searchQ=${CityData.city_name}&${CityData.lat}&${CityData.lon}`);
       setWeather(API.data)
       console.log(API.data)
-    } catch (err) {
-      // console.error(err)
-      // setError('Place not found. Enter valid Location.')
-      // setLocationData(null)
-      // setWeather('')
+    } catch (error) {
+      
     }
   }
   
