@@ -93,3 +93,34 @@ Start time: __5 pm___
 Finish time: __7 pm___
 
 Actual time needed to complete: _2 hours____
+
+
+## Name of feature: Location and Coordinates
+
+Estimate of time needed to complete: 1 day
+
+Start time: 7pm
+
+Finish time: 11pm
+
+Actual time needed to complete: 3 and a half hours
+
+
+## Name of feature: Map
+
+Estimate of time needed to complete: 1 day
+
+Start time: 1:00pm
+
+Finish time: 3pm
+
+Actual time needed to complete: 2 hours
+
+## Name of feature: Error Catching
+
+Estimate of time needed to complete: 1 day
+
+Start time: 11:30am
+
+Actual time needed to complete: __2___
+
