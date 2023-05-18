@@ -82,7 +82,7 @@ function App() {
 
     try {
       // Make API call to locationiq.com
-      const API = await axios.get(`http://localhost:3001/weather?searchQ=${Location}&longitude=${lon}&latitude=${lat}`);
+      const API = await axios.get(`https://cityexplorerapi-flc4.onrender.com/weather?searchQ=${Location}&longitude=${lon}&latitude=${lat}`);
       setWeather(API.data)
       console.log(API.data)
     } catch (err) {
