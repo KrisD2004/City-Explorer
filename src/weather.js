@@ -1,5 +1,7 @@
 import { Card } from "react-bootstrap";
-import React from "react";
+import React, { useState } from "react";
+import Button from "react-bootstrap";
+
 
 function ForcastData(props) {
 
@@ -13,13 +15,15 @@ function ForcastData(props) {
                     <Card.Body>
                         <Card.Title >{day.date}</Card.Title>
                         <Card.Text>
-                            {/* <p>Temperature: {day.temperature}</p>
-                            <p>Humidity: {day.humidity}</p> */}
                             Weather: {day.description}
                         </Card.Text>
                     </Card.Body>
                 </Card>
             ))}
+
+            
+
+            
         </div>
     )
 }

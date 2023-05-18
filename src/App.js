@@ -7,6 +7,7 @@ import axios from 'axios';
 import { Container, Row, Col, Card, CardImg } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ForcastData from './weather'
+import Movie from './Movies';
 
 
 function App() {
@@ -100,6 +101,7 @@ function App() {
       <h1 className='title'>Where the Flock Are You?</h1>
       <ExploreLocation onCity={CitySearch} setLocate={getLocation} setData={setLocationData} weatherButt={weatherSearch} />
       <ForcastData data={weatherData}/>
+      <Movie />
       {locationData && (
 
         <>
