@@ -124,3 +124,33 @@ Start time: 11:30am
 
 Actual time needed to complete: __2___
 
+## Name of feature: Movie API
+
+Estimate of time needed to complete: 2 day
+
+Start time: 10:30am
+
+Finish time : 12pm
+
+Actual time needed to complete: __2 hours__
+
+## NAme of feature: Weather Bit Api
+
+### Day 1
+
+Estimate of time needed to complete: 4 hours
+
+Start time: 9:30am
+
+Finish time: 1:30pm
+
+### day 2
+
+Estimate of time needed to complete: 6 hours
+
+Start time: 9:30am
+
+Finish time: 2:30pm
+
+
+
