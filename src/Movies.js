@@ -7,6 +7,17 @@ import axios from 'axios';
 
 
 
+function MovieItem({ movie }) {
+    return (
+      <div key={movie.id}>
+        <h3>{movie.title}</h3>
+        <p>{movie.overview}</p>
+      </div>
+    );
+  }
+
+
+
 
 function Movie(props) {
 
@@ -54,11 +65,12 @@ function Movie(props) {
                 </Modal.Header>
                 <Modal.Body>
                     {movies.map((movie) => (
-                        <div key={movie.id}>
+                        <MovieItem movie={movie}/>
+                        // <div key={movie.id}>
                             
-                            <h3>{movie.title}</h3>
-                            <p>{movie.overview}</p>
-                        </div>
+                        //     <h3>{movie.title}</h3>
+                        //     <p>{movie.overview}</p>
+                        // </div>
                     ))}
                 </Modal.Body>
                 <Modal.Footer>
